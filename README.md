@@ -16,3 +16,5 @@ gcloud beta container --project "tracetogether-273112" clusters create "cluster-
 ## Deploy
 gcloud container clusters get-credentials cluster-1 --zone europe-north1-a
 kubectl run tracetogether --image registry.hub.docker.com/jontejj/tracetogether:latest --port=8080
+kubectl expose deployment tracetogether --type="LoadBalancer"
+kubectl get service tracetogether --watch
