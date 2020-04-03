@@ -14,6 +14,8 @@
  */
 package com.peltarion.tracetogether;
 
+import com.google.protobuf.Empty;
+
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 
@@ -21,12 +23,22 @@ public class GrpcClient
 {
 	public static void main(String[] args)
 	{
-		ManagedChannel channel = ManagedChannelBuilder.forAddress("tracetogether.se", 8080).usePlaintext().build();
+		// TODO(jontejj): expose config (and use tracetogether.se in prod)
+		ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 8080).usePlaintext().build();
 
-		HelloServiceGrpc.HelloServiceBlockingStub stub = HelloServiceGrpc.newBlockingStub(channel);
+		CaseNotifierServiceGrpc.CaseNotifierServiceBlockingStub stub = CaseNotifierServiceGrpc.newBlockingStub(channel);
 
-		HelloResponse helloResponse = stub.hello(HelloRequest.newBuilder().setFirstName("Baeldung").setLastName("gRPC").build());
-		System.out.println(helloResponse.getGreeting());
+		// Do only once, and save id in local db
+		Id myId = stub.register(Empty.getDefaultInstance());
+
+		// TODO(each app): Do some bluetooth stuff here, catch some other id:s
+		long valueFromBluetoothScanner = 42;
+		Id potentialCase = Id.newBuilder().setId(valueFromBluetoothScanner).build();
+
+		// TODO(each app): Get confirmation in the UI (have the user enter a password)
+
+		// Send (TODO retry if it fails??)
+		stub.confirmedCase(PotentialCases.newBuilder().setConfirmedId(myId).addPotentialCases(potentialCase).build());
 
 		channel.shutdown();
 	}
