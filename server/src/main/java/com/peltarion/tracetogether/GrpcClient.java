@@ -21,7 +21,7 @@ public class GrpcClient
 {
 	public static void main(String[] args)
 	{
-		ManagedChannel channel = ManagedChannelBuilder.forAddress("35.228.181.196", 8080).usePlaintext().build();
+		ManagedChannel channel = ManagedChannelBuilder.forAddress("tracetogether.se", 8080).usePlaintext().build();
 
 		HelloServiceGrpc.HelloServiceBlockingStub stub = HelloServiceGrpc.newBlockingStub(channel);
 
