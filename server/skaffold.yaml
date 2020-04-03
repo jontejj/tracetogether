@@ -1,0 +1,17 @@
+apiVersion: skaffold/v1
+kind: Config
+metadata:
+  name: tracetogether 
+build:
+  artifacts:
+  - image: jontejj/tracetogether # Your Docker image
+    jib: {} # Just add this part for Jib
+deploy:
+  kubectl:
+    manifests:
+    - k8/* # This could be anything, let's talk about this later
+portForward: # This part is optional; add if want port-forwarding
+- resourceType: service #This too can change
+  resourceName: myapp
+  port: 8080
+  localPort: 8080
