@@ -21,15 +21,25 @@ import android.bluetooth.BluetoothManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentTransaction;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
+
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 /**
  * Setup display fragments and ensure the device supports Bluetooth.
  */
 public class MainActivity extends FragmentActivity {
+    public static String TAG = MainActivity.class.getName()
 
     private BluetoothAdapter mBluetoothAdapter;
 
@@ -38,6 +48,7 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTitle(R.string.activity_main_title);
+        logFireBaseToken();
 
         if (savedInstanceState == null) {
 
@@ -73,6 +84,27 @@ public class MainActivity extends FragmentActivity {
                 showErrorText(R.string.bt_not_supported);
             }
         }
+    }
+
+    private void logFireBaseToken() {
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w(TAG, "getInstanceId failed", task.getException());
+                            return;
+                        }
+
+                        // Get new Instance ID token
+                        String token = task.getResult().getToken();
+
+                        // Log and toast
+                        String msg = getString(R.string.msg_token_fmt, token);
+                        Log.d(TAG, msg);
+                        Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     @Override
@@ -120,6 +152,7 @@ public class MainActivity extends FragmentActivity {
         transaction.replace(R.id.advertiser_fragment_container, advertiserFragment);
 
         transaction.commit();
+
     }
 
     private void showErrorText(int messageId) {

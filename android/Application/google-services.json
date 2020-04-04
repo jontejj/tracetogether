@@ -1,0 +1,85 @@
+{
+  "project_info": {
+    "project_number": "657791477578",
+    "firebase_url": "https://trace-together.firebaseio.com",
+    "project_id": "trace-together",
+    "storage_bucket": "trace-together.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:657791477578:android:d1c922bbee8608c62683b3",
+        "android_client_info": {
+          "package_name": "com.example.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "657791477578-lutfghq0f5kth3590gb0pf77ocs204jn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android",
+            "certificate_hash": "d4934a0ad419a4eb961afc8934f68cec66f0fd62"
+          }
+        },
+        {
+          "client_id": "657791477578-stv38clumfie44ll6fh2cgahd5suf8br.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiUnMmOXribRZwDZotuCNZPGSk5zzfug0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "657791477578-stv38clumfie44ll6fh2cgahd5suf8br.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:657791477578:android:7137847bd92584fd2683b3",
+        "android_client_info": {
+          "package_name": "com.example.android.bluetoothadvertisements"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "657791477578-44005ot727v02mp9c40eetmcv7biloeh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.bluetoothadvertisements",
+            "certificate_hash": "d4934a0ad419a4eb961afc8934f68cec66f0fd62"
+          }
+        },
+        {
+          "client_id": "657791477578-stv38clumfie44ll6fh2cgahd5suf8br.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiUnMmOXribRZwDZotuCNZPGSk5zzfug0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "657791477578-stv38clumfie44ll6fh2cgahd5suf8br.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
