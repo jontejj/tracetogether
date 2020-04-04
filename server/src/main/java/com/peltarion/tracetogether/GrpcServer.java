@@ -15,15 +15,17 @@
 package com.peltarion.tracetogether;
 
 import java.io.IOException;
+import java.net.InetSocketAddress;
 
 import io.grpc.Server;
-import io.grpc.ServerBuilder;
+import io.grpc.netty.NettyServerBuilder;
 
 public class GrpcServer
 {
 	public static void main(String[] args) throws IOException, InterruptedException
 	{
-		Server server = ServerBuilder.forPort(8080).addService(new CaseNotifierServiceImpl()).build();
+		Server server = NettyServerBuilder.forAddress(new InetSocketAddress("0.0.0.0", 8080)) //
+				.addService(new CaseNotifierServiceImpl()).build();
 
 		server.start();
 		server.awaitTermination();

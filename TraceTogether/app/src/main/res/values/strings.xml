@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Trace Together</string>
+    <string name="edit_case">Enter an id</string>
+    <string name="button_send">Send case</string>
+</resources>

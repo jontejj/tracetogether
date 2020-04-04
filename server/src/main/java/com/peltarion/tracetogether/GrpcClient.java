@@ -24,6 +24,7 @@ public class GrpcClient
 	public static void main(String[] args)
 	{
 		// TODO(jontejj): expose config (and use tracetogether.se in prod)
+		// TODO: don't use plaintext
 		ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 8080).usePlaintext().build();
 
 		CaseNotifierServiceGrpc.CaseNotifierServiceBlockingStub stub = CaseNotifierServiceGrpc.newBlockingStub(channel);
