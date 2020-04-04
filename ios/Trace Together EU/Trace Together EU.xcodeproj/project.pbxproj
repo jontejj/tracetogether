@@ -1,0 +1,629 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		904C10E52437B935006D7009 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904C10E42437B935006D7009 /* AppDelegate.swift */; };
+		904C10E72437B935006D7009 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904C10E62437B935006D7009 /* SceneDelegate.swift */; };
+		904C10E92437B935006D7009 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904C10E82437B935006D7009 /* ContentView.swift */; };
+		904C10EB2437B937006D7009 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 904C10EA2437B937006D7009 /* Assets.xcassets */; };
+		904C10EE2437B937006D7009 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 904C10ED2437B937006D7009 /* Preview Assets.xcassets */; };
+		904C10F12437B937006D7009 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 904C10EF2437B937006D7009 /* LaunchScreen.storyboard */; };
+		904C10FC2437B937006D7009 /* Trace_Together_EUTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904C10FB2437B937006D7009 /* Trace_Together_EUTests.swift */; };
+		904C11072437B938006D7009 /* Trace_Together_EUUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904C11062437B938006D7009 /* Trace_Together_EUUITests.swift */; };
+		904C11162437BEEF006D7009 /* ServiceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904C11152437BEEF006D7009 /* ServiceProtocols.swift */; };
+		904C11182437C10D006D7009 /* BTLEAdvertisingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904C11172437C10D006D7009 /* BTLEAdvertisingService.swift */; };
+		904C111A24385791006D7009 /* BTLEScannerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904C111924385791006D7009 /* BTLEScannerService.swift */; };
+		904C111C24385A29006D7009 /* BTLEServicesConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904C111B24385A29006D7009 /* BTLEServicesConstants.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		904C10F82437B937006D7009 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 904C10D92437B935006D7009 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 904C10E02437B935006D7009;
+			remoteInfo = "Trace Together EU";
+		};
+		904C11032437B938006D7009 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 904C10D92437B935006D7009 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 904C10E02437B935006D7009;
+			remoteInfo = "Trace Together EU";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		904C10E12437B935006D7009 /* Trace Together EU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Trace Together EU.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		904C10E42437B935006D7009 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		904C10E62437B935006D7009 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		904C10E82437B935006D7009 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		904C10EA2437B937006D7009 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		904C10ED2437B937006D7009 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		904C10F02437B937006D7009 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		904C10F22437B937006D7009 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		904C10F72437B937006D7009 /* Trace Together EUTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Trace Together EUTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		904C10FB2437B937006D7009 /* Trace_Together_EUTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trace_Together_EUTests.swift; sourceTree = "<group>"; };
+		904C10FD2437B937006D7009 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		904C11022437B938006D7009 /* Trace Together EUUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Trace Together EUUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		904C11062437B938006D7009 /* Trace_Together_EUUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trace_Together_EUUITests.swift; sourceTree = "<group>"; };
+		904C11082437B938006D7009 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		904C11152437BEEF006D7009 /* ServiceProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProtocols.swift; sourceTree = "<group>"; };
+		904C11172437C10D006D7009 /* BTLEAdvertisingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTLEAdvertisingService.swift; sourceTree = "<group>"; };
+		904C111924385791006D7009 /* BTLEScannerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTLEScannerService.swift; sourceTree = "<group>"; };
+		904C111B24385A29006D7009 /* BTLEServicesConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTLEServicesConstants.swift; sourceTree = "<group>"; };
+		904C111D24385F49006D7009 /* Trace Together EU.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Trace Together EU.entitlements"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		904C10DE2437B935006D7009 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		904C10F42437B937006D7009 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		904C10FF2437B938006D7009 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		904C10D82437B935006D7009 = {
+			isa = PBXGroup;
+			children = (
+				904C10E32437B935006D7009 /* Trace Together EU */,
+				904C10FA2437B937006D7009 /* Trace Together EUTests */,
+				904C11052437B938006D7009 /* Trace Together EUUITests */,
+				904C10E22437B935006D7009 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		904C10E22437B935006D7009 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				904C10E12437B935006D7009 /* Trace Together EU.app */,
+				904C10F72437B937006D7009 /* Trace Together EUTests.xctest */,
+				904C11022437B938006D7009 /* Trace Together EUUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		904C10E32437B935006D7009 /* Trace Together EU */ = {
+			isa = PBXGroup;
+			children = (
+				904C111D24385F49006D7009 /* Trace Together EU.entitlements */,
+				904C11142437BE6C006D7009 /* Services */,
+				904C10E42437B935006D7009 /* AppDelegate.swift */,
+				904C10E62437B935006D7009 /* SceneDelegate.swift */,
+				904C10E82437B935006D7009 /* ContentView.swift */,
+				904C10EA2437B937006D7009 /* Assets.xcassets */,
+				904C10EF2437B937006D7009 /* LaunchScreen.storyboard */,
+				904C10F22437B937006D7009 /* Info.plist */,
+				904C10EC2437B937006D7009 /* Preview Content */,
+			);
+			path = "Trace Together EU";
+			sourceTree = "<group>";
+		};
+		904C10EC2437B937006D7009 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				904C10ED2437B937006D7009 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		904C10FA2437B937006D7009 /* Trace Together EUTests */ = {
+			isa = PBXGroup;
+			children = (
+				904C10FB2437B937006D7009 /* Trace_Together_EUTests.swift */,
+				904C10FD2437B937006D7009 /* Info.plist */,
+			);
+			path = "Trace Together EUTests";
+			sourceTree = "<group>";
+		};
+		904C11052437B938006D7009 /* Trace Together EUUITests */ = {
+			isa = PBXGroup;
+			children = (
+				904C11062437B938006D7009 /* Trace_Together_EUUITests.swift */,
+				904C11082437B938006D7009 /* Info.plist */,
+			);
+			path = "Trace Together EUUITests";
+			sourceTree = "<group>";
+		};
+		904C11142437BE6C006D7009 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				904C11152437BEEF006D7009 /* ServiceProtocols.swift */,
+				904C111924385791006D7009 /* BTLEScannerService.swift */,
+				904C11172437C10D006D7009 /* BTLEAdvertisingService.swift */,
+				904C111B24385A29006D7009 /* BTLEServicesConstants.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		904C10E02437B935006D7009 /* Trace Together EU */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 904C110B2437B938006D7009 /* Build configuration list for PBXNativeTarget "Trace Together EU" */;
+			buildPhases = (
+				904C10DD2437B935006D7009 /* Sources */,
+				904C10DE2437B935006D7009 /* Frameworks */,
+				904C10DF2437B935006D7009 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Trace Together EU";
+			productName = "Trace Together EU";
+			productReference = 904C10E12437B935006D7009 /* Trace Together EU.app */;
+			productType = "com.apple.product-type.application";
+		};
+		904C10F62437B937006D7009 /* Trace Together EUTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 904C110E2437B938006D7009 /* Build configuration list for PBXNativeTarget "Trace Together EUTests" */;
+			buildPhases = (
+				904C10F32437B937006D7009 /* Sources */,
+				904C10F42437B937006D7009 /* Frameworks */,
+				904C10F52437B937006D7009 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				904C10F92437B937006D7009 /* PBXTargetDependency */,
+			);
+			name = "Trace Together EUTests";
+			productName = "Trace Together EUTests";
+			productReference = 904C10F72437B937006D7009 /* Trace Together EUTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		904C11012437B938006D7009 /* Trace Together EUUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 904C11112437B938006D7009 /* Build configuration list for PBXNativeTarget "Trace Together EUUITests" */;
+			buildPhases = (
+				904C10FE2437B938006D7009 /* Sources */,
+				904C10FF2437B938006D7009 /* Frameworks */,
+				904C11002437B938006D7009 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				904C11042437B938006D7009 /* PBXTargetDependency */,
+			);
+			name = "Trace Together EUUITests";
+			productName = "Trace Together EUUITests";
+			productReference = 904C11022437B938006D7009 /* Trace Together EUUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		904C10D92437B935006D7009 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1140;
+				LastUpgradeCheck = 1140;
+				ORGANIZATIONNAME = peltarion;
+				TargetAttributes = {
+					904C10E02437B935006D7009 = {
+						CreatedOnToolsVersion = 11.4;
+					};
+					904C10F62437B937006D7009 = {
+						CreatedOnToolsVersion = 11.4;
+						TestTargetID = 904C10E02437B935006D7009;
+					};
+					904C11012437B938006D7009 = {
+						CreatedOnToolsVersion = 11.4;
+						TestTargetID = 904C10E02437B935006D7009;
+					};
+				};
+			};
+			buildConfigurationList = 904C10DC2437B935006D7009 /* Build configuration list for PBXProject "Trace Together EU" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 904C10D82437B935006D7009;
+			productRefGroup = 904C10E22437B935006D7009 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				904C10E02437B935006D7009 /* Trace Together EU */,
+				904C10F62437B937006D7009 /* Trace Together EUTests */,
+				904C11012437B938006D7009 /* Trace Together EUUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		904C10DF2437B935006D7009 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				904C10F12437B937006D7009 /* LaunchScreen.storyboard in Resources */,
+				904C10EE2437B937006D7009 /* Preview Assets.xcassets in Resources */,
+				904C10EB2437B937006D7009 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		904C10F52437B937006D7009 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		904C11002437B938006D7009 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		904C10DD2437B935006D7009 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				904C10E52437B935006D7009 /* AppDelegate.swift in Sources */,
+				904C10E72437B935006D7009 /* SceneDelegate.swift in Sources */,
+				904C111C24385A29006D7009 /* BTLEServicesConstants.swift in Sources */,
+				904C10E92437B935006D7009 /* ContentView.swift in Sources */,
+				904C11182437C10D006D7009 /* BTLEAdvertisingService.swift in Sources */,
+				904C11162437BEEF006D7009 /* ServiceProtocols.swift in Sources */,
+				904C111A24385791006D7009 /* BTLEScannerService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		904C10F32437B937006D7009 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				904C10FC2437B937006D7009 /* Trace_Together_EUTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		904C10FE2437B938006D7009 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				904C11072437B938006D7009 /* Trace_Together_EUUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		904C10F92437B937006D7009 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 904C10E02437B935006D7009 /* Trace Together EU */;
+			targetProxy = 904C10F82437B937006D7009 /* PBXContainerItemProxy */;
+		};
+		904C11042437B938006D7009 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 904C10E02437B935006D7009 /* Trace Together EU */;
+			targetProxy = 904C11032437B938006D7009 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		904C10EF2437B937006D7009 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				904C10F02437B937006D7009 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		904C11092437B938006D7009 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		904C110A2437B938006D7009 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		904C110C2437B938006D7009 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Trace Together EU/Trace Together EU.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Trace Together EU/Preview Content\"";
+				DEVELOPMENT_TEAM = LDQV6GB2PV;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Trace Together EU/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.peltarion.Trace-Together-EU";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		904C110D2437B938006D7009 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Trace Together EU/Trace Together EU.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Trace Together EU/Preview Content\"";
+				DEVELOPMENT_TEAM = LDQV6GB2PV;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Trace Together EU/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.peltarion.Trace-Together-EU";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		904C110F2437B938006D7009 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LDQV6GB2PV;
+				INFOPLIST_FILE = "Trace Together EUTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.peltarion.Trace-Together-EUTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Trace Together EU.app/Trace Together EU";
+			};
+			name = Debug;
+		};
+		904C11102437B938006D7009 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LDQV6GB2PV;
+				INFOPLIST_FILE = "Trace Together EUTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.peltarion.Trace-Together-EUTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Trace Together EU.app/Trace Together EU";
+			};
+			name = Release;
+		};
+		904C11122437B938006D7009 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LDQV6GB2PV;
+				INFOPLIST_FILE = "Trace Together EUUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.peltarion.Trace-Together-EUUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Trace Together EU";
+			};
+			name = Debug;
+		};
+		904C11132437B938006D7009 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LDQV6GB2PV;
+				INFOPLIST_FILE = "Trace Together EUUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.peltarion.Trace-Together-EUUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Trace Together EU";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		904C10DC2437B935006D7009 /* Build configuration list for PBXProject "Trace Together EU" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				904C11092437B938006D7009 /* Debug */,
+				904C110A2437B938006D7009 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		904C110B2437B938006D7009 /* Build configuration list for PBXNativeTarget "Trace Together EU" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				904C110C2437B938006D7009 /* Debug */,
+				904C110D2437B938006D7009 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		904C110E2437B938006D7009 /* Build configuration list for PBXNativeTarget "Trace Together EUTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				904C110F2437B938006D7009 /* Debug */,
+				904C11102437B938006D7009 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		904C11112437B938006D7009 /* Build configuration list for PBXNativeTarget "Trace Together EUUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				904C11122437B938006D7009 /* Debug */,
+				904C11132437B938006D7009 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 904C10D92437B935006D7009 /* Project object */;
+}
