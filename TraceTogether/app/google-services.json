@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "84395462221",
+    "firebase_url": "https://tracetogether-273112.firebaseio.com",
+    "project_id": "tracetogether-273112",
+    "storage_bucket": "tracetogether-273112.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:84395462221:android:ec25dceb74923eb4e69604",
+        "android_client_info": {
+          "package_name": "com.peltarion.tracetogether"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "84395462221-0u7mto9sg99jmg3qmbf23ms2mhm08inh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxJhAQfAh4Fgj4v2a_3oJx_D2YptN7nkE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "84395462221-0u7mto9sg99jmg3qmbf23ms2mhm08inh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

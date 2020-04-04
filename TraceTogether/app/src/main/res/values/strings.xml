@@ -2,4 +2,9 @@
     <string name="app_name">Trace Together</string>
     <string name="edit_case">Enter an id</string>
     <string name="button_send">Send case</string>
+    <string name="notification_send">Send notification</string>
+    <string name="channel_name">My channel name</string>
+    <string name="channel_description">My channel description</string>
+    <string name="notification_title">You have been close to a confirmed case of coronavirus</string>
+    <string name="notification_description">Please contact your local health clinic and test yourself</string>
 </resources>

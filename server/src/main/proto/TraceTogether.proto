@@ -13,9 +13,21 @@ message PotentialCases {
     repeated Id potentialCases = 2;
 }
 
+message NotificationToken{
+    Id registeredId = 1;
+    Token token = 2;
+}
+
+message Token
+{
+    string token = 1;
+}
+
 service CaseNotifierService {
     /* TODO: do we need one register / app? The server needs to get device-ids to be able to send push notifications */
     rpc register(google.protobuf.Empty) returns (Id);
+    
+    rpc updateNotificationToken(NotificationToken) returns  (google.protobuf.Empty);
     
     rpc confirmedCase(PotentialCases) returns (google.protobuf.Empty);
 }

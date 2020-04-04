@@ -1,7 +1,10 @@
 package com.peltarion.tracetogether;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.arch.core.util.Function;
+import androidx.core.util.Consumer;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.protobuf.Empty;
@@ -16,23 +19,30 @@ public class SendCaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_case);
 
-        // TODO(jontejj): expose config (and use tracetogether.se in prod)
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("192.168.1.91", 8080).usePlaintext().build();
+        // Get the Intent that started this activity and extract the string
+        Intent intent = getIntent();
+        long caseId = Long.parseLong(intent.getStringExtra(MainActivity.EXTRA_MESSAGE));
 
-        CaseNotifierServiceGrpc.CaseNotifierServiceBlockingStub stub = CaseNotifierServiceGrpc.newBlockingStub(channel);
+
 
         // Do only once, and save id in local db
-        Id myId = stub.register(Empty.getDefaultInstance());
+        //Id myId = stub.register(Empty.getDefaultInstance());
 
         // TODO(each app): Do some bluetooth stuff here, catch some other id:s
-        long valueFromBluetoothScanner = 42;
+        long valueFromBluetoothScanner = caseId;
         Id potentialCase = Id.newBuilder().setId(valueFromBluetoothScanner).build();
 
         // TODO(each app): Get confirmation in the UI (have the user enter a password)
 
         // Send (TODO retry if it fails??)
-        stub.confirmedCase(PotentialCases.newBuilder().setConfirmedId(myId).addPotentialCases(potentialCase).build());
-
-        channel.shutdown();
+        Id myId = RpcClient.RegisteredId.INSTANCE.id;
+        final PotentialCases potentialCases = PotentialCases.newBuilder().setConfirmedId(myId).addPotentialCases(potentialCase).build();
+        RpcClient.call(new Function<CaseNotifierServiceGrpc.CaseNotifierServiceBlockingStub, Void>() {
+            @Override
+            public Void apply(CaseNotifierServiceGrpc.CaseNotifierServiceBlockingStub caseNotifierServiceBlockingStub) {
+                caseNotifierServiceBlockingStub.confirmedCase(potentialCases);
+                return null;
+            }
+        });
     }
 }
