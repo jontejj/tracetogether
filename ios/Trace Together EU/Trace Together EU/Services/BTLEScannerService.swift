@@ -101,11 +101,11 @@ extension BTLEScannerService : CBPeripheralDelegate {
           print("no value")
           return
         }
-        guard let clientId = String.init(data: data, encoding: .utf8) else {
-          print("Unparseable clientId")
+        guard let deviceId = String.init(data: data, encoding: .utf8) else {
+          print("Unparseable deviceId")
           return
         }
-        print(clientId)
+        NotificationCenter.default.post(name: .TTScannerServiceDeviceClientIdDiscovered, object: nil, userInfo: [ScannerServiceDeviceIdKey: deviceId])
       default:
         print("Unhandled Characteristic UUID: \(characteristic.uuid)")
     }

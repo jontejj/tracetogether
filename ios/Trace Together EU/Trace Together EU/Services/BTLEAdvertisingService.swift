@@ -10,12 +10,12 @@ import Foundation
 import CoreBluetooth
 
 class BTLEAdvertisingService : NSObject, CBPeripheralManagerDelegate {
-  let clientId:String
+  let deviceId:String
   let serviceName:String
   fileprivate var manager:CBPeripheralManager? = nil
   
-  init(clientId:String, serviceName:String) {
-    self.clientId = clientId
+  init(deviceId:String, serviceName:String) {
+    self.deviceId = deviceId
     self.serviceName = serviceName
     super.init()
   }
@@ -23,7 +23,7 @@ class BTLEAdvertisingService : NSObject, CBPeripheralManagerDelegate {
   private func createBluetoothService() {
     self.manager?.removeAllServices()
     let service = CBMutableService.init(type: kAdvertisingServiceUUID, primary: true)
-    let characteristic = CBMutableCharacteristic.init(type: kAdvertisingServiceCharacteristicUUID, properties: .read, value: self.clientId.data(using: .utf8), permissions: .readable)
+    let characteristic = CBMutableCharacteristic.init(type: kAdvertisingServiceCharacteristicUUID, properties: .read, value: self.deviceId.data(using: .utf8), permissions: .readable)
     service.characteristics = [characteristic]
     self.manager?.add(service)
   }
@@ -55,8 +55,7 @@ class BTLEAdvertisingService : NSObject, CBPeripheralManagerDelegate {
   
   func peripheralManager(_ peripheral: CBPeripheralManager, didAdd service: CBService, error: Error?) {
     let advertisingData: [String: Any] = [
-        CBAdvertisementDataServiceUUIDsKey: [kAdvertisingServiceUUID],
-        CBAdvertisementDataLocalNameKey: self.serviceName
+        CBAdvertisementDataServiceUUIDsKey: [kAdvertisingServiceUUID]
     ]
     self.manager?.stopAdvertising()
     self.manager?.startAdvertising(advertisingData)

@@ -15,6 +15,12 @@ protocol AdvertisingServiceProtocol {
   func stop(completionFn:AdvertisingServiceResultCallback) -> Void
 }
 
+extension NSNotification.Name {
+    public static let TTScannerServiceDeviceClientIdDiscovered = NSNotification.Name("TTScannerDeviceClientIdDiscovered")
+}
+
+let ScannerServiceDeviceIdKey = "clientId"
+
 protocol ScannerServiceProtocol {
   func start()
   func stop()
