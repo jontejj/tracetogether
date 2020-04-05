@@ -3,7 +3,8 @@ apiVersion: v1
 metadata:
   name: api
 spec:
-  type: NodePort
+  type: LoadBalancer
+  loadBalancerIP: 34.91.100.207
   selector:
     app: api
   ports:
@@ -47,13 +48,13 @@ spec:
             - containerPort: 8080
               protocol: TCP
               name: api-port
-#          TODO: Requires grpc health protocol to be implemented
-#          readinessProbe:
-#            exec:
-#              command: ["/grpc_health_probe", "-addr=:8080"]
-#            initialDelaySeconds: 5
-#            periodSeconds: 5
-#            successThreshold: 1
+      #          TODO: Requires grpc health protocol to be implemented
+      #          readinessProbe:
+      #            exec:
+      #              command: ["/grpc_health_probe", "-addr=:8080"]
+      #            initialDelaySeconds: 5
+      #            periodSeconds: 5
+      #            successThreshold: 1
 
       volumes:
         - name: firebase-config-volume
