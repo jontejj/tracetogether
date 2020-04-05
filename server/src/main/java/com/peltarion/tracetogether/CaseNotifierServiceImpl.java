@@ -101,13 +101,10 @@ public class CaseNotifierServiceImpl extends CaseNotifierServiceImplBase
 		responseObserver.onCompleted();
 	}
 
-	private void initFirebase() throws IOException
+	private void initFirebase()
 	{
-		FileInputStream serviceAccount = new FileInputStream(System.getenv("FIREBASE_KEYFILE"));
-
-		FirebaseOptions options = new FirebaseOptions.Builder().setCredentials(GoogleCredentials.fromStream(serviceAccount))
-				.setDatabaseUrl("https://tracetogether-273112.firebaseio.com").build();
-
-		FirebaseApp.initializeApp(options);
+		// NOTE: Initializing without parameters expects the environment variables FIREBASE_CONFIG and
+		// GOOGLE_APPLICATION_CREDENTIALS to be set.
+		FirebaseApp.initializeApp();
 	}
 }

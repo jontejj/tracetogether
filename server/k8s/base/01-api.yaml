@@ -1,0 +1,77 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: api
+spec:
+  type: NodePort
+  selector:
+    app: api
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: api-port-map
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: api
+spec:
+  selector:
+    matchLabels:
+      app: api
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 25%
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+        - name: api
+          image: trace-together
+          volumeMounts:
+            - mountPath: /etc/firebase-key
+              name: fireabase-key-volume
+            - mountPath: /etc/firebase-config
+              name: firebase-config-volume
+          env:
+            - name: FIREBASE_CONFIG
+              value: /etc/firebase-config/firebase-config.json
+            - name: GOOGLE_APPLICATION_CREDENTIALS
+              value: /etc/firebase-key/firebase-credentials.json
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+              name: api-port
+#          TODO: Requires grpc health protocol to be implemented
+#          readinessProbe:
+#            exec:
+#              command: ["/grpc_health_probe", "-addr=:8080"]
+#            initialDelaySeconds: 5
+#            periodSeconds: 5
+#            successThreshold: 1
+
+      volumes:
+        - name: firebase-config-volume
+          configMap:
+            name: firebase-config
+        - name: fireabase-key-volume
+          secret:
+            secretName: firebase-key
+---
+kind: HorizontalPodAutoscaler
+apiVersion: autoscaling/v1
+metadata:
+  name: api
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: api
+  minReplicas: 1
+  maxReplicas: 32
+  targetCPUUtilizationPercentage: 70
