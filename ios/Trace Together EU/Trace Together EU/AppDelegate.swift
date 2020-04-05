@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import GRPC
+import SwiftProtobuf
+import NIO
 import UserNotifications
 
 extension NSNotification.Name {
-    public static let TTRegisteredForPushNotifications = NSNotification.Name("TTRegisteredForPushNotifications")
+  public static let TTRegisteredForPushNotifications = NSNotification.Name("TTRegisteredForPushNotifications")
 }
 
 @UIApplicationMain
@@ -41,7 +44,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       print("Service started \(success)")
       registerForPushNotifications()
     }
+    DispatchQueue.global(qos: .background).async {
+      self.testRegisterGRPC()
+    }
     return true
+  }
+  
+  func testRegisterGRPC() {
+    let configuration = ClientConnection.Configuration(target: .hostAndPort("34.91.100.207", 80), eventLoopGroup: MultiThreadedEventLoopGroup(numberOfThreads: 1))
+    let connection = ClientConnection(configuration: configuration)
+    let grpc = Com_Peltarion_Tracetogether_CaseNotifierServiceClient.init(channel: connection)
+    //    let cases = Com_Peltarion_Tracetogether_PotentialCases.init()
+    //    let
+    //    cases.potentialCases.append(s)
+    //    grpc.confirmedCase(cases)
+    
+    let registerCall = grpc.register(SwiftProtobuf.Google_Protobuf_Empty())
+    do {
+      let response = try registerCall.response.wait()
+      print("ID received: \(response.id)")
+    } catch {
+      print("GRPC failed \(error)")
+    }
   }
   
   // MARK: UISceneSession Lifecycle
