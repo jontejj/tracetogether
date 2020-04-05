@@ -3,6 +3,11 @@
     package="com.peltarion.tracetogether">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:allowBackup="true"
@@ -17,6 +22,13 @@
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
+        </service>
+        <!-- Service to handle BLE Advertising - Using a service allows advertising to continue
+             when the app is no longer on screen in a reliable manner.  -->
+        <service
+            android:name=".AdvertiserService"
+            android:enabled="true"
+            android:exported="false" >
         </service>
         <activity android:name=".SendCaseActivity"
             android:parentActivityName=".MainActivity">

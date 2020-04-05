@@ -14,6 +14,8 @@
  */
 package com.peltarion.tracetogether;
 
+import java.util.UUID;
+
 import com.google.protobuf.Empty;
 
 import io.grpc.ManagedChannel;
@@ -23,6 +25,7 @@ public class GrpcClient
 {
 	public static void main(String[] args)
 	{
+		System.out.println(UUID.randomUUID().toString());
 		// TODO(jontejj): expose config (and use tracetogether.se in prod)
 		// TODO: don't use plaintext
 		ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 8080).usePlaintext().build();

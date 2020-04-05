@@ -7,6 +7,8 @@ import androidx.core.util.Consumer;
 
 import com.google.protobuf.Empty;
 
+import java.util.UUID;
+
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusRuntimeException;
