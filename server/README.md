@@ -16,10 +16,11 @@
 
 NOTE: if you want to use a different name for the ip-address 
 change that name in [ingress-patch.yaml](k8s/overlays/gke/ingress-patch.yaml)
+NOTE2: region must be the same as the cluster is in
 
 ```
-gcloud --project "trace-together" compute addresses create trace-together-ip --global
-gcloud --project "trace-together" compute addresses describe trace-together-ip --global 
+gcloud --project "trace-together" compute addresses create trace-together-ip --region europe-west4
+gcloud --project "trace-together" compute addresses describe trace-together-ip --region europe-west4
 ```
 1. Place firebase credentials here [k8s/base/conf/firebase-credentials.json](k8s/base/conf/).
 2. Make sure [k8s/base/conf/firebase-config.json](k8s/base/conf/firebase-config.json) is configured correctly.

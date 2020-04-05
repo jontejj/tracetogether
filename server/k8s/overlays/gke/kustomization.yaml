@@ -4,14 +4,7 @@ bases:
   - ../../base/
 
 resources:
-  # TODO: should add certificate
-  - certificate.yaml
   - namespace.yaml
 
 # Contain everything in a namespace to avoid name collisions
 namespace: trace-together
-
-# Set GKE specific annotations in ingress, and tune deployments for GKE nodes
-# Should patch here to
-patchesStrategicMerge:
-  - ingress-patch.yaml
