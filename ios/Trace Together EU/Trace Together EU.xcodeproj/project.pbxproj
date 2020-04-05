@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,6 +20,11 @@
 		904C111A24385791006D7009 /* BTLEScannerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904C111924385791006D7009 /* BTLEScannerService.swift */; };
 		904C111C24385A29006D7009 /* BTLEServicesConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904C111B24385A29006D7009 /* BTLEServicesConstants.swift */; };
 		904C111F24391E97006D7009 /* DeviceRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904C111E24391E97006D7009 /* DeviceRegistry.swift */; };
+		9055CA4C24394F740085C634 /* TraceTogether.proto in Sources */ = {isa = PBXBuildFile; fileRef = 9055CA4B24394F740085C634 /* TraceTogether.proto */; };
+		9055CA4F243954970085C634 /* proto in Resources */ = {isa = PBXBuildFile; fileRef = 9055CA4E243954960085C634 /* proto */; };
+		9055CA53243956C30085C634 /* TraceTogether.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9055CA51243956C30085C634 /* TraceTogether.grpc.swift */; };
+		9055CA54243956C30085C634 /* TraceTogether.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9055CA52243956C30085C634 /* TraceTogether.pb.swift */; };
+		9055CA5724395DF90085C634 /* GRPC in Frameworks */ = {isa = PBXBuildFile; productRef = 9055CA5624395DF90085C634 /* GRPC */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +65,10 @@
 		904C111B24385A29006D7009 /* BTLEServicesConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTLEServicesConstants.swift; sourceTree = "<group>"; };
 		904C111D24385F49006D7009 /* Trace Together EU.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Trace Together EU.entitlements"; sourceTree = "<group>"; };
 		904C111E24391E97006D7009 /* DeviceRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRegistry.swift; sourceTree = "<group>"; };
+		9055CA4B24394F740085C634 /* TraceTogether.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; name = TraceTogether.proto; path = ../../../server/src/main/proto/TraceTogether.proto; sourceTree = "<group>"; };
+		9055CA4E243954960085C634 /* proto */ = {isa = PBXFileReference; lastKnownFileType = folder; path = proto; sourceTree = "<group>"; };
+		9055CA51243956C30085C634 /* TraceTogether.grpc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TraceTogether.grpc.swift; path = "Trace Together EU/proto/TraceTogether.grpc.swift"; sourceTree = "<group>"; };
+		9055CA52243956C30085C634 /* TraceTogether.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TraceTogether.pb.swift; path = "Trace Together EU/proto/TraceTogether.pb.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9055CA5724395DF90085C634 /* GRPC in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,10 +100,13 @@
 		904C10D82437B935006D7009 = {
 			isa = PBXGroup;
 			children = (
+				9055CA51243956C30085C634 /* TraceTogether.grpc.swift */,
+				9055CA52243956C30085C634 /* TraceTogether.pb.swift */,
 				904C10E32437B935006D7009 /* Trace Together EU */,
 				904C10FA2437B937006D7009 /* Trace Together EUTests */,
 				904C11052437B938006D7009 /* Trace Together EUUITests */,
 				904C10E22437B935006D7009 /* Products */,
+				90D3EAA8243944480088E99F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -111,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				904C111D24385F49006D7009 /* Trace Together EU.entitlements */,
+				9055CA4E243954960085C634 /* proto */,
 				904C11142437BE6C006D7009 /* Services */,
 				904C10E42437B935006D7009 /* AppDelegate.swift */,
 				904C10E62437B935006D7009 /* SceneDelegate.swift */,
@@ -118,6 +132,7 @@
 				904C10EA2437B937006D7009 /* Assets.xcassets */,
 				904C10EF2437B937006D7009 /* LaunchScreen.storyboard */,
 				904C10F22437B937006D7009 /* Info.plist */,
+				9055CA4B24394F740085C634 /* TraceTogether.proto */,
 				904C10EC2437B937006D7009 /* Preview Content */,
 			);
 			path = "Trace Together EU";
@@ -161,6 +176,13 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		90D3EAA8243944480088E99F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -177,6 +199,9 @@
 			dependencies = (
 			);
 			name = "Trace Together EU";
+			packageProductDependencies = (
+				9055CA5624395DF90085C634 /* GRPC */,
+			);
 			productName = "Trace Together EU";
 			productReference = 904C10E12437B935006D7009 /* Trace Together EU.app */;
 			productType = "com.apple.product-type.application";
@@ -249,6 +274,9 @@
 				Base,
 			);
 			mainGroup = 904C10D82437B935006D7009;
+			packageReferences = (
+				9055CA5524395DF90085C634 /* XCRemoteSwiftPackageReference "grpc-swift" */,
+			);
 			productRefGroup = 904C10E22437B935006D7009 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -266,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				904C10F12437B937006D7009 /* LaunchScreen.storyboard in Resources */,
+				9055CA4F243954970085C634 /* proto in Resources */,
 				904C10EE2437B937006D7009 /* Preview Assets.xcassets in Resources */,
 				904C10EB2437B937006D7009 /* Assets.xcassets in Resources */,
 			);
@@ -300,6 +329,9 @@
 				904C11182437C10D006D7009 /* BTLEAdvertisingService.swift in Sources */,
 				904C11162437BEEF006D7009 /* ServiceProtocols.swift in Sources */,
 				904C111A24385791006D7009 /* BTLEScannerService.swift in Sources */,
+				9055CA4C24394F740085C634 /* TraceTogether.proto in Sources */,
+				9055CA53243956C30085C634 /* TraceTogether.grpc.swift in Sources */,
+				9055CA54243956C30085C634 /* TraceTogether.pb.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -628,6 +660,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9055CA5524395DF90085C634 /* XCRemoteSwiftPackageReference "grpc-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/grpc/grpc-swift.git";
+			requirement = {
+				kind = revision;
+				revision = 373ffd54c1c1a319d0ddac9476d13be9023584bb;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9055CA5624395DF90085C634 /* GRPC */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9055CA5524395DF90085C634 /* XCRemoteSwiftPackageReference "grpc-swift" */;
+			productName = GRPC;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 904C10D92437B935006D7009 /* Project object */;
 }
