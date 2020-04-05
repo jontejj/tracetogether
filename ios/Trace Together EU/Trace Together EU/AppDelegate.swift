@@ -16,13 +16,28 @@ extension NSNotification.Name {
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
   
-  var advertisingService:AdvertisingServiceProtocol = BTLEAdvertisingService(clientId: "abc", serviceName: "Trace Together EU")
-  var scannerService:ScannerServiceProtocol = BTLEScannerService()
+  var advertisingService:AdvertisingServiceProtocol?
+  var scannerService:ScannerServiceProtocol?
+  var deviceRegistry = DeviceRegistry()
+  
+  var deviceId:Int64 {
+    get {
+      var uID = UserDefaults.standard.integer(forKey: "userID")
+      assert(Int.max == Int64.max , "Need 64 bit platform to run")
+      while uID == 0 {
+        uID = Int.random(in: 0 ..< Int.max)
+        UserDefaults.standard.set(uID, forKey: "userID")
+      }
+      return Int64(uID)
+    }
+  }
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
-    scannerService.start()
-    advertisingService.start { (success) in
+    advertisingService = BTLEAdvertisingService(deviceId: "\(deviceId)", serviceName: "Trace Together EU")
+    scannerService = BTLEScannerService()
+    scannerService!.start()
+    advertisingService!.start { (success) in
       print("Service started \(success)")
       registerForPushNotifications()
     }
@@ -58,6 +73,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     didFailToRegisterForRemoteNotificationsWithError error: Error) {
     print("Failed to register: \(error)")
   }
+  
+  // MARK: Notification integration
   
   func getNotificationSettings() {
     UNUserNotificationCenter.current().getNotificationSettings { settings in
