@@ -24,23 +24,25 @@ public class SendCaseActivity extends AppCompatActivity {
 
         String casePassword = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
         //Just for demo
-        long caseId = RpcClient.RegisteredId.INSTANCE.id.getId(); //Long.parseLong(intent.getStringExtra(MainActivity.EXTRA_MESSAGE));
+        send(casePassword);
+    }
 
-
-
+    public static void send(String password){
+        //long caseId = RpcClient.RegisteredId.INSTANCE.id.getId(); //Long.parseLong(intent.getStringExtra(MainActivity.EXTRA_MESSAGE));
         // Do only once, and save id in local db
         //Id myId = stub.register(Empty.getDefaultInstance());
 
         // TODO(each app): Do some bluetooth stuff here, catch some other id:s
-        long valueFromBluetoothScanner = caseId;
-        Id potentialCase = Id.newBuilder().setId(valueFromBluetoothScanner).build();
+        //long valueFromBluetoothScanner = caseId;
+        Id potentialCase = Id.newBuilder().setId(RpcClient.RegisteredId.INSTANCE.id.getId() + 1).build();
 
         // TODO(each app): Get confirmation in the UI (have the user enter a password)
 
         // Send (TODO retry if it fails??)
-        Id myId = RpcClient.RegisteredId.INSTANCE.id;
+        Id myId = Id.newBuilder().setId(RpcClient.RegisteredId.INSTANCE.id.getId()).build();
+
         final PotentialCases potentialCases = PotentialCases.newBuilder() //
-                .setPassword(CasePassword.newBuilder().setPassword(casePassword).build()) //
+                .setPassword(CasePassword.newBuilder().setPassword(password).build()) //
                 .setConfirmedId(myId).addPotentialCases(potentialCase).build();
         RpcClient.call(new Function<CaseNotifierServiceGrpc.CaseNotifierServiceBlockingStub, Void>() {
             @Override

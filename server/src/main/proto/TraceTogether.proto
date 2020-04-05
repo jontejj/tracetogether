@@ -13,7 +13,7 @@ message NewUserRequest{
     AdminUser newUser = 2;
 }
 
-message CasePasswordRequest{
+message ConfirmedCaseNotificationRequest{
     Id idForConfirmedCase = 1;
     AdminUser user = 2;
 }
@@ -48,7 +48,7 @@ message Token
 
 service CaseNotifierService {
     rpc requestNewUser(NewUserRequest) returns (google.protobuf.Empty);
-    rpc requestCasePassword(CasePasswordRequest) returns (CasePassword);
+    rpc sendConfirmationNotification(ConfirmedCaseNotificationRequest) returns (google.protobuf.Empty);
     rpc register(google.protobuf.Empty) returns (Id);
     
     rpc updateNotificationToken(NotificationToken) returns  (google.protobuf.Empty);

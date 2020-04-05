@@ -17,12 +17,12 @@ package com.peltarion.tracetogether;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 
-public class GrpcClient
+public class RegisterNewAdminUser
 {
 	public static void main(String[] args)
 	{
-
-		long idForCase = 1;
+		// Create an admin user
+		// long idForCase = 6;
 		String newUser = "jonatan";
 		String newUserPassword = "admin124";
 		// TODO(jontejj): expose config (and use tracetogether.se in prod)
@@ -36,10 +36,13 @@ public class GrpcClient
 
 		stub.requestNewUser(NewUserRequest.newBuilder().setCreator(SystemConfig.systemUser()).setNewUser(newAdminUser).build());
 
-		CasePassword casePassword = stub.requestCasePassword(CasePasswordRequest.newBuilder().setIdForConfirmedCase(Id.newBuilder().setId(idForCase))
-				.setUser(newAdminUser).build());
+		// stub.sendConfirmationNotification(ConfirmedCaseNotificationRequest.newBuilder()
+		// .setIdForConfirmedCase(com.peltarion.tracetogether.Id.newBuilder().setId(idForCase).build()).setUser(newAdminUser).build());
+		// CasePassword casePassword =
+		// stub.requestCasePassword(CasePasswordRequest.newBuilder().setIdForConfirmedCase(Id.newBuilder().setId(idForCase))
+		// .setUser(newAdminUser).build());
 
-		System.out.println("Case password for " + idForCase + ": " + casePassword);
+		// System.out.println("Case password for " + idForCase + ": " + casePassword);
 
 		// stub.requestCasePassword(CasePasswordRequest.newBuilder().set)
 

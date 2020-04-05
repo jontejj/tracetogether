@@ -5,8 +5,11 @@
     <string name="notification_send">Send notification</string>
     <string name="channel_name">My channel name</string>
     <string name="channel_description">My channel description</string>
-    <string name="notification_title">You have been close to a confirmed case of coronavirus</string>
+    <string name="notification_title">You have been close to a confirmed case of corona virus</string>
     <string name="notification_description">Please contact your local health clinic and test yourself</string>
+    <string name="notification_request_data_title">Corona\'s hit</string>
+    <string name="notification_request_data_description">Uploaded info about other users you have been close to</string>
+    <string name="uploaded_data">Uploaded your proximity data</string>
 
     <!-- FROM BLE sample -->
     <string name="bt_not_enabled_leaving">User declined to enable Bluetooth, exiting Bluetooth Advertisements.</string>

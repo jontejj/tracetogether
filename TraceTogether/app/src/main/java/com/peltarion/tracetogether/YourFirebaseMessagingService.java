@@ -20,11 +20,18 @@ import com.google.firebase.iid.InstanceIdResult;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
 /**
  * I followed https://firebase.google.com/docs/android/setup to setup Firebase
  * And then https://firebase.google.com/docs/cloud-messaging/android/client
  */
 public class YourFirebaseMessagingService  extends FirebaseMessagingService {
+
+    private static final int POTENTIAL_CASE_WARNING_NOTIFCATION_ID = 1;
+    private static final int CONFIRMED_CASE_REQUEST_DATA_ID = 2;
+
+    private final AtomicBoolean alreadyHit = new AtomicBoolean();
 
     @Override
     public void onNewToken(@NonNull String token) {
@@ -35,16 +42,39 @@ public class YourFirebaseMessagingService  extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
-        //TODO: check which notifaction it is before showing
-        Notification notification = new NotificationCompat.Builder(this, MainActivity.CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_potential_case_notification)
-                .setContentTitle(getString(R.string.notification_title))
-                .setContentText(getString(R.string.notification_description))
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT).build();
+
+        Log.i("firebase", "Got notification: " + remoteMessage.getMessageId());
+
+        int notificationType = Integer.parseInt(remoteMessage.getData().get("ID"));
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, MainActivity.CHANNEL_ID)
+                .setSmallIcon(R.drawable.ic_potential_case_notification);
+        switch(notificationType){
+            case POTENTIAL_CASE_WARNING_NOTIFCATION_ID:
+                    if(alreadyHit.get()){
+                        return;
+                    }
+                    builder.setContentTitle(getString(R.string.notification_title))
+                        .setContentText(getString(R.string.notification_description))
+                        .setPriority(NotificationCompat.PRIORITY_DEFAULT).build();
+                break;
+            case CONFIRMED_CASE_REQUEST_DATA_ID:
+                builder.setContentTitle(getString(R.string.notification_request_data_title))
+                        .setContentText(getString(R.string.notification_request_data_description))
+                        .setPriority(NotificationCompat.PRIORITY_DEFAULT).build();
+                alreadyHit.set(true);
+                String password = remoteMessage.getData().get("password");
+                SendCaseActivity.send(password);
+                //Intent intent = new Intent(this, SendCaseActivity.class);
+                //intent.putExtra(MainActivity.EXTRA_MESSAGE, );
+                //startActivity(intent);
+                break;
+        }
+
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
         // notificationId is a unique int for each notification that you must define
-        notificationManager.notify(MainActivity.notificationId.incrementAndGet(), notification);
-        Log.i("firebase", "Got notification: " + remoteMessage.getMessageId());
+        notificationManager.notify(MainActivity.notificationId.incrementAndGet(), builder.build());
+
+
     }
 
     @Override
