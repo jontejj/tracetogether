@@ -1,6 +1,6 @@
 # tracetogether
 
-## Flow 1:
+## Flow 1 (requires phone number):
 1. User downloads app
 2. User starts app
 3. App tracks who the user comes into contact (other users) (using bluetooth)
@@ -13,21 +13,7 @@
 11. Server sends out push notifications to potential cases.
 12. Potential cases should consider testing themselves if they also have symptoms.
 
-## Flow 2:
-1. User downloads app
-2. User starts app
-3. App tracks who the user comes into contact (other users) (using bluetooth)
-4. User suspects that they have the virus (they have symptoms ), they go to get tested. They show the id in the app to the Doctor.
-5. User goes home
-6. Doctor confirms that the user has the virus.
-7. Doctor uses an admin UI to create a case password for the users id
-8. Doctor sends the password to the user
-9. User enters password into app.
-10. App uploads users that have been close to the confirmed case
-11. Server sends out push notifications to potential cases.
-12. Potential cases should consider testing themselves if they also have symptoms.
-
-## Flow 3:
+## Flow 2 (requires doctor to note the user's id):
 1. User downloads app
 2. User starts app
 3. App tracks who the user comes into contact (other users) (using bluetooth)
