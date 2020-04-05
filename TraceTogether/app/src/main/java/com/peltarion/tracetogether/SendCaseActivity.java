@@ -21,7 +21,10 @@ public class SendCaseActivity extends AppCompatActivity {
 
         // Get the Intent that started this activity and extract the string
         Intent intent = getIntent();
-        long caseId = Long.parseLong(intent.getStringExtra(MainActivity.EXTRA_MESSAGE));
+
+        String casePassword = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+        //Just for demo
+        long caseId = RpcClient.RegisteredId.INSTANCE.id.getId(); //Long.parseLong(intent.getStringExtra(MainActivity.EXTRA_MESSAGE));
 
 
 
@@ -36,7 +39,9 @@ public class SendCaseActivity extends AppCompatActivity {
 
         // Send (TODO retry if it fails??)
         Id myId = RpcClient.RegisteredId.INSTANCE.id;
-        final PotentialCases potentialCases = PotentialCases.newBuilder().setConfirmedId(myId).addPotentialCases(potentialCase).build();
+        final PotentialCases potentialCases = PotentialCases.newBuilder() //
+                .setPassword(CasePassword.newBuilder().setPassword(casePassword).build()) //
+                .setConfirmedId(myId).addPotentialCases(potentialCase).build();
         RpcClient.call(new Function<CaseNotifierServiceGrpc.CaseNotifierServiceBlockingStub, Void>() {
             @Override
             public Void apply(CaseNotifierServiceGrpc.CaseNotifierServiceBlockingStub caseNotifierServiceBlockingStub) {

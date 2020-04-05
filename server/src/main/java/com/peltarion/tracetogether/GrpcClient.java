@@ -14,10 +14,6 @@
  */
 package com.peltarion.tracetogether;
 
-import java.util.UUID;
-
-import com.google.protobuf.Empty;
-
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 
@@ -25,24 +21,39 @@ public class GrpcClient
 {
 	public static void main(String[] args)
 	{
-		System.out.println(UUID.randomUUID().toString());
+
+		long idForCase = 1;
+		String newUser = "jonatan";
+		String newUserPassword = "admin124";
 		// TODO(jontejj): expose config (and use tracetogether.se in prod)
 		// TODO: don't use plaintext
 		ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 8080).usePlaintext().build();
 
 		CaseNotifierServiceGrpc.CaseNotifierServiceBlockingStub stub = CaseNotifierServiceGrpc.newBlockingStub(channel);
 
+		AdminUser newAdminUser = AdminUser.newBuilder().setUser(newUser).setPassword(Password.newBuilder().setPassword(newUserPassword).build())
+				.build();
+
+		stub.requestNewUser(NewUserRequest.newBuilder().setCreator(SystemConfig.systemUser()).setNewUser(newAdminUser).build());
+
+		CasePassword casePassword = stub.requestCasePassword(CasePasswordRequest.newBuilder().setIdForConfirmedCase(Id.newBuilder().setId(idForCase))
+				.setUser(newAdminUser).build());
+
+		System.out.println("Case password for " + idForCase + ": " + casePassword);
+
+		// stub.requestCasePassword(CasePasswordRequest.newBuilder().set)
+
 		// Do only once, and save id in local db
-		Id myId = stub.register(Empty.getDefaultInstance());
+		// Id myId = stub.register(Empty.getDefaultInstance());
 
 		// TODO(each app): Do some bluetooth stuff here, catch some other id:s
-		long valueFromBluetoothScanner = 42;
-		Id potentialCase = Id.newBuilder().setId(valueFromBluetoothScanner).build();
+		// long valueFromBluetoothScanner = 42;
+		// Id potentialCase = Id.newBuilder().setId(valueFromBluetoothScanner).build();
 
 		// TODO(each app): Get confirmation in the UI (have the user enter a password)
 
 		// Send (TODO retry if it fails??)
-		stub.confirmedCase(PotentialCases.newBuilder().setConfirmedId(myId).addPotentialCases(potentialCase).build());
+		// stub.confirmedCase(PotentialCases.newBuilder().setConfirmedId(myId).addPotentialCases(potentialCase).build());
 
 		channel.shutdown();
 	}

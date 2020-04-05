@@ -3,14 +3,37 @@ option java_multiple_files = true;
 package com.peltarion.tracetogether;
 import "google/protobuf/empty.proto";
 
+message AdminUser{
+    string user = 1;
+    Password password = 2;
+}
+
+message NewUserRequest{
+    AdminUser creator = 1;
+    AdminUser newUser = 2;
+}
+
+message CasePasswordRequest{
+    Id idForConfirmedCase = 1;
+    AdminUser user = 2;
+}
+
+message Password{
+    string password = 1;
+}
+
+message CasePassword{
+    string password = 1;
+}
+
 message Id {
     int64 id = 1;
 }
 
 message PotentialCases {
     Id confirmedId = 1;
-    /* TODO(jontejj): include timestamp in the request to the server? */
     repeated Id potentialCases = 2;
+    CasePassword password = 3;
 }
 
 message NotificationToken{
@@ -24,7 +47,8 @@ message Token
 }
 
 service CaseNotifierService {
-    /* TODO: do we need one register / app? The server needs to get device-ids to be able to send push notifications */
+    rpc requestNewUser(NewUserRequest) returns (google.protobuf.Empty);
+    rpc requestCasePassword(CasePasswordRequest) returns (CasePassword);
     rpc register(google.protobuf.Empty) returns (Id);
     
     rpc updateNotificationToken(NotificationToken) returns  (google.protobuf.Empty);

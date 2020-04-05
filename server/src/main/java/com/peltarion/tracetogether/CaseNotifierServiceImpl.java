@@ -1,7 +1,6 @@
 package com.peltarion.tracetogether;
 
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -9,13 +8,15 @@ import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
+import org.passay.CharacterRule;
+import org.passay.EnglishCharacterData;
+import org.passay.PasswordGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.auth.oauth2.GoogleCredentials;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 import com.google.firebase.FirebaseApp;
-import com.google.firebase.FirebaseOptions;
 import com.google.firebase.messaging.BatchResponse;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingException;
@@ -33,19 +34,57 @@ public class CaseNotifierServiceImpl extends CaseNotifierServiceImplBase
 	private static final Logger LOG = LoggerFactory.getLogger(CaseNotifierServiceImpl.class);
 
 	// TODO(jontejj): store in db
+	private final Set<AdminUser> adminUsers = Sets.newConcurrentHashSet();
 	private final AtomicLong latestId = new AtomicLong();
-
 	private final ConcurrentMap<Id, Token> registrationTokens = Maps.newConcurrentMap();
+	// TODO: also store who confirmed which case (mostly for stats)
+	private final ConcurrentMap<Id, CasePassword> casePasswords = Maps.newConcurrentMap();
 
-	public CaseNotifierServiceImpl() throws IOException
+	private final PasswordGenerator passwordGenerator = new PasswordGenerator();
+
+	public CaseNotifierServiceImpl()
 	{
 		initFirebase();
+		adminUsers.add(SystemConfig.systemUser());
+	}
+
+	@Override
+	public void requestNewUser(NewUserRequest request, StreamObserver<Empty> responseObserver)
+	{
+		if(validateAuth(request.getCreator(), responseObserver))
+		{
+			adminUsers.add(request.getNewUser());
+			responseObserver.onNext(Empty.getDefaultInstance());
+			responseObserver.onCompleted();
+		}
+	}
+
+	private boolean validateAuth(AdminUser user, StreamObserver<?> responseObserver)
+	{
+		if(adminUsers.contains(user))
+			return true;
+		responseObserver.onError(new IllegalArgumentException("No proper credentials given"));
+		return false;
+	}
+
+	@Override
+	public void requestCasePassword(CasePasswordRequest request, StreamObserver<CasePassword> responseObserver)
+	{
+		if(validateAuth(request.getUser(), responseObserver))
+		{
+			String password = passwordGenerator.generatePassword(10, passwordRules());
+			CasePassword casePassword = CasePassword.newBuilder().setPassword(password).build();
+			casePasswords.put(request.getIdForConfirmedCase(), casePassword);
+			responseObserver.onNext(casePassword);
+			responseObserver.onCompleted();
+		}
 	}
 
 	@Override
 	public void register(Empty request, StreamObserver<Id> responseObserver)
 	{
-		responseObserver.onNext(Id.newBuilder().setId(latestId.incrementAndGet()).build());
+		long registeredId = latestId.incrementAndGet();
+		responseObserver.onNext(Id.newBuilder().setId(registeredId).build());
 		responseObserver.onCompleted();
 	}
 
@@ -61,6 +100,17 @@ public class CaseNotifierServiceImpl extends CaseNotifierServiceImplBase
 	@Override
 	public void confirmedCase(PotentialCases request, StreamObserver<Empty> responseObserver)
 	{
+		CasePassword storedCasePassword = casePasswords.get(request.getConfirmedId());
+		if(storedCasePassword == null)
+		{
+			responseObserver.onError(new IllegalStateException("No password generated for case yet."));
+			return;
+		}
+		else if(!storedCasePassword.equals(request.getPassword()))
+		{
+			responseObserver.onError(new IllegalStateException("Given password does not match the stored password."));
+			return;
+		}
 		// TODO: send push notifications here, store the request in case the server dies
 		LOG.info("received confirmed case: {}. Potential cases: {}", request.getConfirmedId(), request.getPotentialCasesList());
 		Set<Id> potentialIds = new HashSet<>(request.getPotentialCasesList());
@@ -106,5 +156,18 @@ public class CaseNotifierServiceImpl extends CaseNotifierServiceImplBase
 		// NOTE: Initializing without parameters expects the environment variables FIREBASE_CONFIG and
 		// GOOGLE_APPLICATION_CREDENTIALS to be set.
 		FirebaseApp.initializeApp();
+	}
+
+	private List<CharacterRule> passwordRules()
+	{
+		return Arrays.asList(
+								// at least one upper-case character
+								new CharacterRule(EnglishCharacterData.UpperCase, 1),
+
+								// at least one lower-case character
+								new CharacterRule(EnglishCharacterData.LowerCase, 1),
+
+								// at least one digit character
+								new CharacterRule(EnglishCharacterData.Digit, 1));
 	}
 }
