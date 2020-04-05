@@ -12,7 +12,7 @@ buildNumber.properties
 .mvn/wrapper/maven-wrapper.jar
 
 .metadata
-bin/
+src/main/jib/
 tmp/
 *.tmp
 *.bak
@@ -68,6 +68,7 @@ local.properties
 .scala_dependencies
 .worksheet
 
+k8s/base/conf/firebase-credentials.json
 # Uncomment this line if you wish to ignore the project description file.
 # Typically, this file would be tracked if it contains build/dependency configurations:
 #.project
