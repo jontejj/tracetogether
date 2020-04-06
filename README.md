@@ -1,5 +1,9 @@
 # tracetogether
 
+## Demo Video
+  [![TraceTogether](https://i.ytimg.com/vi/qvk1nH8G9c0/hqdefault.jpg?sqp=-oaymwEZCNACELwBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLBQ5BWe7cgBK5ZIa2P3hfptut6oXw)](https://youtu.be/qvk1nH8G9c0)
+  
+
 ## Flow 1 (requires phone number):
 1. User downloads app
 2. User starts app
